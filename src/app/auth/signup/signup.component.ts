@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,12 +9,9 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onSubmit(form: NgForm) {
-    console.log(form.value.password.length);
-    
+    console.log(form);
   }
 }
