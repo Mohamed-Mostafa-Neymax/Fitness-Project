@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,10 +8,24 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
+  // MSFrom1970ToNow = Date.now();
+  // dateObj = new Date();
+  maxDate: Date;
+
   constructor() { }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
+  }
 
   onSubmit(form: NgForm) {
     console.log(form);
+
+    // console.log(this.MSFrom1970ToNow);            // time in milliseconds since 1970
+    // console.log(this.dateObj.getDate());          // TodayNum
+    // console.log(this.dateObj.getDay());           // indexOfDay
+    // console.log(this.dateObj.getFullYear());      // YearNum
+    // console.log(this.dateObj.getHours());         // HourNum
+    // console.log(this.dateObj.getMilliseconds());  // HourNum
   }
 }
