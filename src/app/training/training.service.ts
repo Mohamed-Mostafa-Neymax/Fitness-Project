@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Exercise } from './training.model';
 
 export class TrainingService {
@@ -8,7 +9,19 @@ export class TrainingService {
         { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 }
     ];
 
+    private runningExercise: Exercise;
+    exerciseChanged = new Subject<Exercise>();
+
     getAvailableExercises() {
         return this.availableExercise.slice();
+    }
+
+    startExercise(selectedId: string) {
+        this.runningExercise = this.availableExercise.find( ex => ex.id == selectedId );
+        this.exerciseChanged.next({ ...this.runningExercise });
+    }
+
+    getRunningExercise() {
+        return { ...this.runningExercise };
     }
 }
